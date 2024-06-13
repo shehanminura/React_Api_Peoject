@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/React_Api_Peoject/static/css/main.2117068b.css",
+    "main.js": "/React_Api_Peoject/static/js/main.bffaaded.js",
+    "static/media/wp10154402.webp": "/React_Api_Peoject/static/media/wp10154402.4af94382d0fc564300a4.webp",
+    "index.html": "/React_Api_Peoject/index.html",
+    "main.2117068b.css.map": "/React_Api_Peoject/static/css/main.2117068b.css.map",
+    "main.bffaaded.js.map": "/React_Api_Peoject/static/js/main.bffaaded.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2117068b.css",
+    "static/js/main.bffaaded.js"
+  ]
+}
