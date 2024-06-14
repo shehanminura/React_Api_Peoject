@@ -30,14 +30,13 @@ function App() {
           onChange={event => setLocation(event.target.value)}
           onKeyPress={searchLocation}
           placeholder="Enter Location"
-          type="text"
-        />
+          type="text"/>
       </div>
       {error && <p className="error">{error}</p>}
       <div className="container">
         <div className="top">
           <div className="location">
-            <p>{data.name}</p>
+            <p>{data.name} / {data.sys ? data.sys.country : null}</p>
             
           </div>
           <div className="temp">
