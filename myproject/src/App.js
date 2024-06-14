@@ -6,19 +6,25 @@ function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false); 
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=895284fb2d2c50a520ea537456963d9c`;
 
-  const searchLocation = (event) => {
+  const searchLocation = async (event) => {
     if (event.key === 'Enter') {
-      axios.get(url).then((response) => {
+      setLoading(true); 
+      try {
+        const response = await axios.get(url);
         setData(response.data);
+        console.log(response);
         setError('');
-      }).catch((error) => {
+      } catch (error) {
         setError('City not found. Please enter a valid city.');
         setData({});
-      });
-      setLocation('');
+      } finally {
+        setLoading(false); 
+        setLocation('');
+      }
     }
   };
 
@@ -30,14 +36,15 @@ function App() {
           onChange={event => setLocation(event.target.value)}
           onKeyPress={searchLocation}
           placeholder="Enter Location"
-          type="text"/>
+          type="text"
+        />
       </div>
+      {loading ? <div className="loader"></div> : null} 
       {error && <p className="error">{error}</p>}
       <div className="container">
         <div className="top">
           <div className="location">
-            <p>{data.name} / {data.sys ? data.sys.country : null}</p>
-            
+            <p>{data.name}  {data.sys ? data.sys.country : null}</p>
           </div>
           <div className="temp">
             {data.main ? <h1>{data.main.temp.toFixed()}°F</h1> : null}
